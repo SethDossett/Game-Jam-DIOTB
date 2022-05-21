@@ -121,7 +121,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1409306008855259286}
-  - component: {fileID: 1409306008855259285}
   m_Layer: 0
   m_Name: Hammer
   m_TagString: Untagged
@@ -146,18 +145,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1409306008855259285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1409306008855259284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d83c9e8c8374a0846bcebac40d9568cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1409306009404681663
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +396,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa0fa2f1e5a1de47a2d8be46ce8c727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 3700
+  turnSpeed: 3700000
+--- !u!114 &2117668461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356998954796537500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83c9e8c8374a0846bcebac40d9568cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1409306008459827069
 PrefabInstance:
   m_ObjectHideFlags: 0

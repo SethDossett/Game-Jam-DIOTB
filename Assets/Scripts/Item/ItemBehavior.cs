@@ -22,7 +22,7 @@ public class ItemBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-           pointSystem.AddPoints((int)other.impulse.magnitude);
+           pointSystem.AddPoints((int)(other.impulse.magnitude*other.impulse.magnitude));
         }
     }
 }

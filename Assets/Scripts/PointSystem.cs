@@ -16,7 +16,7 @@ public class PointSystem : MonoBehaviour
     public void AddPoints(int pointsEarned)
     {
         points += pointsEarned;
-        print("Adding " + pointsEarned + " Total " + points);
+       // print("Adding " + pointsEarned + " Total " + points);
     }
   
 
