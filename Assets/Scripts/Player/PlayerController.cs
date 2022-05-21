@@ -5,8 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
+    [SerializeField] private float _rotationSpeed = 5;
     [SerializeField] private ConfigurableJoint _hipJoint;
     [SerializeField] private Rigidbody _hip;
+    [SerializeField] private Transform _animTransform;
+
+    [SerializeField] Transform _camTransform;
 
     [SerializeField] private Animator _targetAnimator;
     int _run = Animator.StringToHash("Run");
@@ -19,10 +23,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        HandleMovement();
+    }
+
+    void HandleMovement()
+    {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        direction = Quaternion.AngleAxis(_camTransform.rotation.eulerAngles.y, Vector3.up) * direction;
+        direction.Normalize();
 
         if (direction.magnitude >= 0.1f)
         {
@@ -39,6 +50,30 @@ public class PlayerController : MonoBehaviour
             _running = false;
         }
 
+        if(direction != Vector3.zero)
+        {
+            HandleRotation(direction);
+        }
+
         _targetAnimator.SetBool(_run, _running);
+    }
+    void HandleRotation(Vector3 dir)
+    {
+        //Quaternion toRotation = Quaternion.LookRotation(dir, Vector3.up);
+        //
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, _rotationSpeed * Time.deltaTime);
+        //_animTransform.rotation = transform.rotation;
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (focus)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }
