@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     private bool _running = false;
     void Start()
     {
+        if (_camTransform == null)
+        {
+            _camTransform = Camera.main.transform;
+        }
 
     }
 
