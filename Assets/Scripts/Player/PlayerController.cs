@@ -9,21 +9,53 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ConfigurableJoint _hipJoint;
     [SerializeField] private Rigidbody _hip;
     [SerializeField] private Transform _animTransform;
+    Rigidbody[] _rbs;
 
     [SerializeField] Transform _camTransform;
+    [SerializeField] Transform _airplane;
+    Vector3 _offset = new Vector3(0, 2.5f, 0);
 
+    [SerializeField] Animator _camAnim;
     [SerializeField] private Animator _targetAnimator;
     int _run = Animator.StringToHash("Run");
+    int _fallingCam = Animator.StringToHash("FreeFallCam");
+    int _playerCam = Animator.StringToHash("PlayerCam");
 
     private bool _running = false;
+    private bool _inAirPlane = true;
     void Start()
     {
+        _rbs = gameObject.GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rb in _rbs)
+        {
+            rb.isKinematic = true;
+        }
 
+        transform.position = _airplane.position + _offset;
     }
-
     void Update()
     {
-        HandleMovement();
+        if (_inAirPlane)
+        {
+            transform.position = _airplane.position + _offset;
+        }
+        else
+        {
+            _camAnim.Play(_fallingCam);
+            foreach (Rigidbody rb in _rbs)
+            {
+                rb.isKinematic = false;
+            }
+            HandleMovement();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if(_inAirPlane)
+                _inAirPlane = false;
+
+        }
+
     }
 
     void HandleMovement()
@@ -41,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
             _hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
 
-            _hip.AddForce(direction * _speed, ForceMode.Impulse);
+            _hip.AddForce(direction * _speed * Time.fixedDeltaTime, ForceMode.Impulse);
 
             _running = true;
         }

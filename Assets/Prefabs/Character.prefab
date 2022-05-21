@@ -45,12 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966193a7b0671ff41a8d97a1db99f92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 500
   _rotationSpeed: 50
   _hipJoint: {fileID: 2718065651589526927}
   _hip: {fileID: 2718065651589526921}
   _animTransform: {fileID: 2464097032588269666}
   _camTransform: {fileID: 0}
+  _airplane: {fileID: 0}
+  _camAnim: {fileID: 0}
   _targetAnimator: {fileID: 8417816932718821912}
 --- !u!1001 &2718065652563312521
 PrefabInstance:
@@ -73,7 +75,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 45.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
       propertyPath: m_LocalPosition.z
