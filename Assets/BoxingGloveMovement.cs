@@ -16,7 +16,6 @@ public class BoxingGloveMovement : MonoBehaviour
 
     void Punch()
     {
-        print("punch");
         rb.AddForce(transform.up * punchStrength);
     }
     // Update is called once per frame

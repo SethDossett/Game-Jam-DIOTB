@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class ItemBehavior : MonoBehaviour
 {
+    private PointSystem pointSystem;
     // Start is called before the first frame update
     void Start()
     {
-        
+        pointSystem = FindObjectOfType<PointSystem>();
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class ItemBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            
+           pointSystem.AddPoints((int)other.impulse.magnitude);
         }
     }
 }
