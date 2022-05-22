@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
         if(_airplane != null)
         {
             transform.position = _airplane.position + _offset;
-
         }
     }
     void Update()
