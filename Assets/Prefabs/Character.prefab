@@ -50,6 +50,9 @@ MonoBehaviour:
   _hipJoint: {fileID: 2718065651589526927}
   _hip: {fileID: 2718065651589526921}
   _animTransform: {fileID: 2464097032588269666}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
   _camTransform: {fileID: 0}
   _airplane: {fileID: 0}
   _camAnim: {fileID: 0}

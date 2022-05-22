@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody _hip;
     [SerializeField] private Transform _animTransform;
     Rigidbody[] _rbs;
+    [SerializeField] LayerMask _groundLayer;
 
     [SerializeField] Transform _camTransform;
     [SerializeField] Transform _airplane;
@@ -18,9 +19,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator _camAnim;
     [SerializeField] private Animator _targetAnimator;
     int _run = Animator.StringToHash("Run");
+    int _fall = Animator.StringToHash("Fall");
     int _fallingCam = Animator.StringToHash("FreeFallCam");
     int _playerCam = Animator.StringToHash("PlayerCam");
 
+    private bool _falling = false;
     private bool _running = false;
     private bool _inAirPlane = true;
     void Start()
@@ -53,12 +56,15 @@ public class PlayerController : MonoBehaviour
                 rb.isKinematic = false;
             }
             HandleMovement();
+            CheckFalling();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if(_inAirPlane)
                 _inAirPlane = false;
+
+            _falling = true;
 
         }
 
@@ -81,7 +87,8 @@ public class PlayerController : MonoBehaviour
 
             _hip.AddForce(direction * _speed * Time.fixedDeltaTime, ForceMode.Impulse);
 
-            _running = true;
+            if(!_falling)
+                _running = true;
         }
         else
         {
@@ -93,7 +100,11 @@ public class PlayerController : MonoBehaviour
             HandleRotation(direction);
         }
 
-        _targetAnimator.SetBool(_run, _running);
+        if (!_falling)
+        {
+            _targetAnimator.SetBool(_fall, false);
+            _targetAnimator.SetBool(_run, _running);
+        }
     }
     void HandleRotation(Vector3 dir)
     {
@@ -117,5 +128,38 @@ public class PlayerController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
         }
+    }
+    void CheckFalling()
+    {
+        if (IsGrounded())
+        {
+            if (_falling)
+                _falling = false;
+            else return;
+;       }
+
+        if (_falling)
+        {
+            _targetAnimator.SetBool(_run, false);
+            _targetAnimator.SetBool(_fall, true);
+        }
+
+    }
+
+    bool IsGrounded()
+    {
+        if (_falling)
+        {
+            return Physics.Raycast(_hip.gameObject.transform.position, Vector3.down, out RaycastHit hitinfo, 10f, _groundLayer);
+
+        }
+        else return false;
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(_hip.gameObject.transform.position, Vector3.down * 10f);
     }
 }
