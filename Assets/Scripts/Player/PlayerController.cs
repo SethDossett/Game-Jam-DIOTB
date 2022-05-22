@@ -31,17 +31,24 @@ public class PlayerController : MonoBehaviour
             rb.isKinematic = true;
         }
 
-        transform.position = _airplane.position + _offset;
+        if(_airplane != null)
+        {
+            transform.position = _airplane.position + _offset;
+
+        }
     }
     void Update()
     {
         if (_inAirPlane)
         {
-            transform.position = _airplane.position + _offset;
+            if (_airplane != null)
+            {
+                transform.position = _airplane.position + _offset;
+            }
         }
         else
         {
-            _camAnim.Play(_fallingCam);
+            ChangeCameraAnim(_playerCam);
             foreach (Rigidbody rb in _rbs)
             {
                 rb.isKinematic = false;
@@ -97,6 +104,10 @@ public class PlayerController : MonoBehaviour
         //_animTransform.rotation = transform.rotation;
     }
 
+    void ChangeCameraAnim(int hash)
+    {
+        _camAnim.Play(hash);
+    }
     private void OnApplicationFocus(bool focus)
     {
         if (focus)
