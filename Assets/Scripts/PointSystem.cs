@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PointSystem : MonoBehaviour
 {
-    private float points = 0;
+    [SerializeField] private int points;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,10 @@ public class PointSystem : MonoBehaviour
        // print("Adding " + pointsEarned + " Total " + points);
     }
   
-
+    public int GetPoints()
+    {
+        return points;
+    }
     // Update is called once per frame
     void Update()
     {

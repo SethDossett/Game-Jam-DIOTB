@@ -696,8 +696,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.07609558, y: -0.5590992}
-  m_SizeDelta: {x: -8.885, y: -9.6906}
+  m_AnchoredPosition: {x: 0.07609558, y: -0.32699966}
+  m_SizeDelta: {x: -8.885, y: -9.2264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2105312982524751532
 CanvasRenderer:
@@ -860,10 +860,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 2105312982524751531}
   _timer: {fileID: 2105312981475012321}
+  _pointSystem: {fileID: 0}
   _timeText: {fileID: 2105312982275902048}
   _healthText: {fileID: 2105312982804152822}
   _promptText: {fileID: 2105312981671461818}
   _scoreText: {fileID: 5806110928896660413}
+  _time: 0
 --- !u!1 &2105312982804152820
 GameObject:
   m_ObjectHideFlags: 0
