@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
     private void UpdatePoints()
     {
         int points = _pointSystem.GetComponent<PointSystem>().GetPoints();
-        print(points);
+
         _scoreText.text = points.ToString();
     }
 

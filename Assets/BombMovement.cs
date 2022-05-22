@@ -10,9 +10,7 @@ public class BombMovement : MonoBehaviour
     private bool walking = true;
 
     private Vector3 currentWaypoint;
-
-    public Transform waypointOrigin;
-
+    
     public float waypointRadius;
     private NavMeshAgent agent;
     private Animator anim;
@@ -62,14 +60,14 @@ public class BombMovement : MonoBehaviour
     }
     private void PickNewWayPoint()
     {
-        currentWaypoint = new Vector3(waypointOrigin.position.x + Random.insideUnitCircle.x * waypointRadius,
-            transform.position.y, waypointOrigin.position.z + Random.insideUnitCircle.y * waypointRadius);
+        currentWaypoint = new Vector3(Random.insideUnitCircle.x * waypointRadius,
+            transform.position.y, Random.insideUnitCircle.y * waypointRadius);
     }
 
     // Update is called once per frame
     void Update()
     {
         agent.SetDestination(currentWaypoint);
-        if(Vector3.Distance(transform.position,currentWaypoint) <1) PickNewWayPoint();
+        if(Vector3.Distance(transform.position,currentWaypoint) <10) PickNewWayPoint();
     }
 }
