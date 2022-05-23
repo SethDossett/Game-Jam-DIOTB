@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float _speed = 5f;
+    public float MyPlayerSpeed = 5f;
     [SerializeField] private float _rotationSpeed = 5;
     [SerializeField] private ConfigurableJoint _hipJoint;
     [SerializeField] private Rigidbody _hip;
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
             _hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
 
-            _hip.AddForce(direction * _speed * Time.fixedDeltaTime, ForceMode.Impulse);
+            _hip.AddForce(direction * MyPlayerSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
 
             if(!_falling)
                 _running = true;
@@ -156,7 +156,6 @@ public class PlayerController : MonoBehaviour
         else return false;
 
     }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966193a7b0671ff41a8d97a1db99f92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 500
+  MyPlayerSpeed: 500
   _rotationSpeed: 50
   _hipJoint: {fileID: 2718065651589526927}
   _hip: {fileID: 2718065651589526921}
