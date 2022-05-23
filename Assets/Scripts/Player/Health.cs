@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     public bool invincible;
 
     public float invincibleCooldownTime = 2;
+    private UIManager UI;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,7 @@ public class Health : MonoBehaviour
     {
         invincible = true;
         health -= damage;
+        UI.UpdateHealth(health);
         Invoke("InvincibleCooldown",invincibleCooldownTime);
     }
 

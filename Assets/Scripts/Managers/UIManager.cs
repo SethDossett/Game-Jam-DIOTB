@@ -40,13 +40,16 @@ public class UIManager : MonoBehaviour
     {
         UpdateTime();
         UpdatePrompt();
-        UpdateHealth();
+        //UpdateHealth();
     }
 
-    private void UpdateHealth()
+    public void UpdateHealth(int newHealth)
     {
+        _healthBar.fillAmount = newHealth;
         _healthText.text = Mathf.RoundToInt(_healthBar.fillAmount * 100).ToString() + "%";
     }
+
+
 
     private void UpdatePrompt()
     {

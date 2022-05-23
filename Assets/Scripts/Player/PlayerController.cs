@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     private bool _falling = false;
     private bool _running = false;
     private bool _inAirPlane = true;
+    
+    public GameObject GOUI;
+    private bool canJump = false;
     void Start()
     {
         _rbs = gameObject.GetComponentsInChildren<Rigidbody>();
@@ -38,7 +41,17 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = _airplane.position + _offset;
         }
+    
+        Invoke("EnableJumping", 5);
     }
+
+    void EnableJumping()
+    {
+        print("jump");
+        canJump = true;
+        GOUI.SetActive(true);
+    }
+    
     void Update()
     {
         if (_inAirPlane)
