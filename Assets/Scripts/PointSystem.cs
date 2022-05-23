@@ -6,7 +6,7 @@ using UnityEngine;
 public class PointSystem : MonoBehaviour
 {
     [SerializeField] private int points;
-
+    [SerializeField] GeneralEventSO _updateScore;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +16,7 @@ public class PointSystem : MonoBehaviour
     public void AddPoints(int pointsEarned)
     {
         points += pointsEarned;
+        _updateScore.RaiseEvent();
        // print("Adding " + pointsEarned + " Total " + points);
     }
   

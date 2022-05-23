@@ -861,6 +861,7 @@ MonoBehaviour:
   _healthBar: {fileID: 2105312982524751531}
   _timer: {fileID: 2105312981475012321}
   _pointSystem: {fileID: 0}
+  _addPoints: {fileID: 11400000, guid: 12c68f0177ff2b94f9f140de561155ba, type: 2}
   _timeText: {fileID: 2105312982275902048}
   _healthText: {fileID: 2105312982804152822}
   _promptText: {fileID: 2105312981671461818}

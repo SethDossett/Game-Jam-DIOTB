@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b964a378d89b1bd4c943883cb8a23967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 0
+  _updateScore: {fileID: 11400000, guid: 12c68f0177ff2b94f9f140de561155ba, type: 2}

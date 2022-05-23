@@ -11,20 +11,31 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image _healthBar;
     [SerializeField] GameObject _timer;
     [SerializeField] GameObject _pointSystem;
+    [SerializeField] GeneralEventSO _addPoints;
 
     [Header("Texts")]
     [SerializeField] TextMeshProUGUI  _timeText, _healthText, _promptText, _scoreText;
     [SerializeField] float _time;
+    int _currentPoints;
 
+    private void OnEnable()
+    {
+        _addPoints.OnRaiseEvent += AddPoints;
+    }
+    private void OnDisable()
+    {
+        _addPoints.OnRaiseEvent -= AddPoints;
+    }
     void Start()
     {
         _time = 0f;
+        _currentPoints = 0;
+        _scoreText.text = _currentPoints.ToString();
     }
 
     void Update()
     {
         UpdateTime();
-        //UpdatePoints();
         UpdatePrompt();
         UpdateHealth();
     }
@@ -38,12 +49,20 @@ public class UIManager : MonoBehaviour
     {
         
     }
-
-    private void UpdatePoints()
+    private void AddPoints()
+    {
+        StartCoroutine(UpdatePoints());
+    }
+    private IEnumerator UpdatePoints()
     {
         int points = _pointSystem.GetComponent<PointSystem>().GetPoints();
-
-        _scoreText.text = points.ToString();
+        while(_currentPoints < points)
+        {
+            _currentPoints += 100;
+            _scoreText.text = _currentPoints.ToString();
+            yield return null;
+        }
+        
     }
 
     private void UpdateTime()

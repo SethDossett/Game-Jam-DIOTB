@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
         timer += Time.deltaTime;
 
 
-
+        
 
     }
 }
