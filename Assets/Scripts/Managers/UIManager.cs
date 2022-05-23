@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         UpdateTime();
-        UpdatePoints();
+        //UpdatePoints();
         UpdatePrompt();
         UpdateHealth();
     }

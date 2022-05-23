@@ -29,7 +29,7 @@ public class BombMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        print("collision with " + other.gameObject.tag);
+        //print("collision with " + other.gameObject.tag);
         if (other.gameObject.CompareTag("Player"))
         {
             anim.Play("attack01");
