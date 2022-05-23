@@ -27,8 +27,11 @@ public class PlayerController : MonoBehaviour
     private bool _running = false;
     private bool _inAirPlane = true;
     
-    public GameObject GOUI;
+    public GameObject GoUI;
     private bool canJump = false;
+    public GameObject backgroundMusic;
+    public GameObject skydiveSoundRegion;
+    public GameObject skydiveSoundRegion2;
     void Start()
     {
         _rbs = gameObject.GetComponentsInChildren<Rigidbody>();
@@ -42,14 +45,22 @@ public class PlayerController : MonoBehaviour
             transform.position = _airplane.position + _offset;
         }
     
-        Invoke("EnableJumping", 5);
+        Invoke("EnableJumping", 7);
     }
 
     void EnableJumping()
     {
         print("jump");
         canJump = true;
-        GOUI.SetActive(true);
+        GoUI.SetActive(true);
+        Invoke("TurnOffGoUI", 3);
+
+    }
+
+    void TurnOffGoUI()
+    {
+        GoUI.SetActive(false);
+
     }
     
     void Update()
@@ -74,9 +85,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(_inAirPlane)
+            if (_inAirPlane)
+            {
                 _inAirPlane = false;
-
+                backgroundMusic.SetActive(true);
+                skydiveSoundRegion.SetActive(true);
+                skydiveSoundRegion2.SetActive(true);
+                
+            }
             _falling = true;
 
         }
