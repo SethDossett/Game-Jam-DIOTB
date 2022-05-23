@@ -284,6 +284,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1380433210928623295, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.0009756
+      objectReference: {fileID: 0}
     - target: {fileID: 1380433211386305408, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
       propertyPath: m_Name
       value: CM StateDrivenCamera1
@@ -350,11 +354,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7460997098213787651, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.01707183
+      value: 0.017071826
       objectReference: {fileID: 0}
     - target: {fileID: 7460997098213787651, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0010131334
+      value: 0.0010131331
       objectReference: {fileID: 0}
     - target: {fileID: 7913509494419723664, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
       propertyPath: m_Follow
@@ -369,8 +373,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7932147512089239714, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.017043594
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932147512089239714, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0014105702
+      value: 0.0014105706
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932147512089239714, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.08246847
       objectReference: {fileID: 0}
     - target: {fileID: 9130898969796687008, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2729,6 +2741,10 @@ PrefabInstance:
       propertyPath: _pointSystem
       value: 
       objectReference: {fileID: 1700138361}
+    - target: {fileID: 4033308166976533367, guid: 6ab1e6766bf6f344bad406b350def4a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ab1e6766bf6f344bad406b350def4a9, type: 3}
 --- !u!1001 &1998189533

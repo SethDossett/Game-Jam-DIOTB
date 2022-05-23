@@ -15,8 +15,11 @@ public class UIManager : MonoBehaviour
 
     [Header("Texts")]
     [SerializeField] TextMeshProUGUI  _timeText, _healthText, _promptText, _scoreText;
+
+    [Header("Values")]
     [SerializeField] float _time;
     int _currentPoints;
+    [SerializeField] int _incrimentValue = 100;
 
     private void OnEnable()
     {
@@ -58,7 +61,7 @@ public class UIManager : MonoBehaviour
         int points = _pointSystem.GetComponent<PointSystem>().GetPoints();
         while(_currentPoints < points)
         {
-            _currentPoints += 100;
+            _currentPoints += _incrimentValue;
             _scoreText.text = _currentPoints.ToString();
             yield return null;
         }
