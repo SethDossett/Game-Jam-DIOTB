@@ -6,10 +6,12 @@ using UnityEngine;
 public class ItemBehavior : MonoBehaviour
 {
     private PointSystem pointSystem;
+    private Health playerHealth;
     // Start is called before the first frame update
     void Start()
     {
         pointSystem = FindObjectOfType<PointSystem>();
+        playerHealth = FindObjectOfType<Health>();
     }
 
     // Update is called once per frame
@@ -22,7 +24,12 @@ public class ItemBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-           pointSystem.AddPoints((int)(other.impulse.magnitude*other.impulse.magnitude));
+            if (!playerHealth.invincible)
+            {
+                int hitStrength = (int) other.impulse.magnitude;
+                pointSystem.AddPoints(hitStrength*hitStrength);
+                playerHealth.TakeDamage(hitStrength);
+            }
         }
     }
 }
