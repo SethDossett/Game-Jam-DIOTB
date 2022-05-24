@@ -39,7 +39,6 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         UpdateTime();
-        UpdatePrompt();
         UpdateHealth();
     }
 
@@ -48,9 +47,9 @@ public class UIManager : MonoBehaviour
         _healthText.text = Mathf.RoundToInt(_healthBar.fillAmount * 100).ToString() + "%";
     }
 
-    private void UpdatePrompt()
+    public void UpdatePrompt(String message)
     {
-        
+        _promptText.text = message;
     }
     private void AddPoints()
     {

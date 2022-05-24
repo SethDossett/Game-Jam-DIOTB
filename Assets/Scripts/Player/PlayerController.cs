@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _animTransform;
     Rigidbody[] _rbs;
     [SerializeField] LayerMask _groundLayer;
+    UIManager _UIManager;
 
     [SerializeField] Transform _camTransform;
     [SerializeField] Transform _airplane;
@@ -26,6 +27,10 @@ public class PlayerController : MonoBehaviour
     private bool _falling = false;
     private bool _running = false;
     private bool _inAirPlane = true;
+    private void Awake()
+    {
+        _UIManager = FindObjectOfType<UIManager>();
+    }
     void Start()
     {
         _rbs = gameObject.GetComponentsInChildren<Rigidbody>();
@@ -64,9 +69,38 @@ public class PlayerController : MonoBehaviour
             if(_inAirPlane)
                 _inAirPlane = false;
 
-            _falling = true;
+            if(!_falling)
+                _falling = true;
 
         }
+
+    }
+
+    void CountDown()
+    {
+        float timer = 0f;
+        int timeTillNextTick = 1;
+        int tickCount = 0;
+        timer += Time.deltaTime;
+
+        if(timer >= timeTillNextTick)
+        {
+            timer = 0f;
+            tickCount++;
+            if(tickCount < 9)
+            {
+                _UIManager.UpdatePrompt(tickCount.ToString());
+            }
+            else
+            {
+                _UIManager.UpdatePrompt("Jump!");
+                // canJump = true;
+            }
+
+            
+        }
+        
+
 
     }
 
