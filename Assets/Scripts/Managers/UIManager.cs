@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] float _time;
     int _currentPoints;
     [SerializeField] int _incrimentValue = 100;
+    bool _countDown = true;
 
     private void OnEnable()
     {
@@ -31,25 +32,32 @@ public class UIManager : MonoBehaviour
     }
     void Start()
     {
-        _time = 0f;
+        _time = 7f;
         _currentPoints = 0;
         _scoreText.text = _currentPoints.ToString();
+        _countDown = true;
+        CountDown();
     }
 
     void Update()
     {
-        UpdateTime();
-        UpdateHealth();
+        if (_countDown) CountDown();
+        else UpdateTime();
+
+
+        UpdatePrompt();
+        //UpdateHealth();
     }
 
-    private void UpdateHealth()
+    public void UpdateHealth(int newHealth)
     {
+        _healthBar.fillAmount = newHealth;
         _healthText.text = Mathf.RoundToInt(_healthBar.fillAmount * 100).ToString() + "%";
     }
 
-    public void UpdatePrompt(String message)
+    private void UpdatePrompt()
     {
-        _promptText.text = message;
+        
     }
     private void AddPoints()
     {
@@ -66,7 +74,17 @@ public class UIManager : MonoBehaviour
         }
         
     }
-
+    private void CountDown()
+    {
+        _time -= Time.deltaTime;    
+        _timeText.text = $"{(Mathf.RoundToInt(_time)).ToString()}";
+        if (_time <= 0f)
+        {
+            _time = 0f;
+            _countDown = false;
+        }
+         
+    }
     private void UpdateTime()
     {
         _time += Time.deltaTime;

@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _animTransform;
     Rigidbody[] _rbs;
     [SerializeField] LayerMask _groundLayer;
-    UIManager _UIManager;
 
     [SerializeField] Transform _camTransform;
     [SerializeField] Transform _airplane;
@@ -27,10 +26,12 @@ public class PlayerController : MonoBehaviour
     private bool _falling = false;
     private bool _running = false;
     private bool _inAirPlane = true;
-    private void Awake()
-    {
-        _UIManager = FindObjectOfType<UIManager>();
-    }
+    
+    public GameObject GoUI;
+    private bool canJump = false;
+    public GameObject backgroundMusic;
+    public GameObject skydiveSoundRegion;
+    public GameObject skydiveSoundRegion2;
     void Start()
     {
         _rbs = gameObject.GetComponentsInChildren<Rigidbody>();
@@ -43,7 +44,25 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = _airplane.position + _offset;
         }
+    
+        Invoke("EnableJumping", 7);
     }
+
+    void EnableJumping()
+    {
+        print("jump");
+        canJump = true;
+        GoUI.SetActive(true);
+        Invoke("TurnOffGoUI", 3);
+
+    }
+
+    void TurnOffGoUI()
+    {
+        GoUI.SetActive(false);
+
+    }
+    
     void Update()
     {
         if (_inAirPlane)
@@ -64,43 +83,19 @@ public class PlayerController : MonoBehaviour
             CheckFalling();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (canJump && Input.GetKeyDown(KeyCode.Space))
         {
-            if(_inAirPlane)
+            if (_inAirPlane)
+            {
                 _inAirPlane = false;
-
-            if(!_falling)
-                _falling = true;
+                backgroundMusic.SetActive(true);
+                skydiveSoundRegion.SetActive(true);
+                skydiveSoundRegion2.SetActive(true);
+                
+            }
+            _falling = true;
 
         }
-
-    }
-
-    void CountDown()
-    {
-        float timer = 0f;
-        int timeTillNextTick = 1;
-        int tickCount = 0;
-        timer += Time.deltaTime;
-
-        if(timer >= timeTillNextTick)
-        {
-            timer = 0f;
-            tickCount++;
-            if(tickCount < 9)
-            {
-                _UIManager.UpdatePrompt(tickCount.ToString());
-            }
-            else
-            {
-                _UIManager.UpdatePrompt("Jump!");
-                // canJump = true;
-            }
-
-            
-        }
-        
-
 
     }
 
