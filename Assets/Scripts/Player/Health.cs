@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private int health = 100;
+    private int health = 10000;
     public bool invincible;
 
     public float invincibleCooldownTime = 2;
@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UI = FindObjectOfType<UIManager>();
     }
 
     public void TakeDamage(int damage)
@@ -21,6 +21,8 @@ public class Health : MonoBehaviour
         invincible = true;
         health -= damage;
         UI.UpdateHealth(health);
+        print($"{health}: health ");
+        print($"{damage}: damage ");
         Invoke("InvincibleCooldown",invincibleCooldownTime);
     }
 

@@ -20,16 +20,16 @@ public class ItemBehavior : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (!playerHealth.invincible)
-            {
-                int hitStrength = (int) other.impulse.magnitude;
-                pointSystem.AddPoints(hitStrength*hitStrength);
-                playerHealth.TakeDamage(hitStrength);
-            }
-        }
-    }
+    //private void OnCollisionEnter(Collision other)
+    //{
+    //    if (other.gameObject.CompareTag("Player"))
+    //    {
+    //        if (!playerHealth.invincible)
+    //        {
+    //            int hitStrength = (int) other.impulse.magnitude;
+    //            pointSystem.AddPoints(hitStrength*hitStrength);
+    //            playerHealth.TakeDamage(hitStrength);
+    //        }
+    //    }
+    //}
 }
