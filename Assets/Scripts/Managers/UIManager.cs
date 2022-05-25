@@ -49,7 +49,9 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHealth(int newHealth)
     {
-        _healthBar.fillAmount = newHealth;
+        print("update health input " + newHealth + ". changing fill amount from " + _healthBar.fillAmount);
+        _healthBar.fillAmount = 100f/(float)newHealth;
+        print("to" + _healthBar.fillAmount);
         _healthText.text = Mathf.RoundToInt(_healthBar.fillAmount * 100).ToString() + "%";
     }
 

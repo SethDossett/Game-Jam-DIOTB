@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private int health = 10000;
+    private int health = 100;
     public bool invincible;
 
     public float invincibleCooldownTime = 2;
@@ -21,8 +21,6 @@ public class Health : MonoBehaviour
         invincible = true;
         health -= damage;
         UI.UpdateHealth(health);
-        print($"{health}: health ");
-        print($"{damage}: damage ");
         Invoke("InvincibleCooldown",invincibleCooldownTime);
     }
 

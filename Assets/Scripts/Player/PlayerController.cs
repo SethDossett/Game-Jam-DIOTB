@@ -201,16 +201,5 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawRay(_hip.gameObject.transform.position, Vector3.down * 10f);
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        print("hit");
-        
-         if (!playerHealth.invincible)
-         {
-             int hitStrength = (int)other.impulse.magnitude;
-             //pointSystem.AddPoints(hitStrength * hitStrength);
-             playerHealth.TakeDamage(hitStrength);
-         }
-        
-    }
+
 }
