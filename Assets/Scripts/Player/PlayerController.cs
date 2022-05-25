@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform _camTransform;
     [SerializeField] Transform _airplane;
     Vector3 _offset = new Vector3(0, 2.5f, 0);
+    Vector3 _direction;
 
     [SerializeField] Animator _camAnim;
     [SerializeField] private Animator _targetAnimator;
@@ -106,17 +107,16 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-        direction = Quaternion.AngleAxis(_camTransform.rotation.eulerAngles.y, Vector3.up) * direction;
-        direction.Normalize();
+        _direction = new Vector3(horizontal, 0f, vertical).normalized;
+        _direction = Quaternion.AngleAxis(_camTransform.rotation.eulerAngles.y, Vector3.up) * _direction;
+        _direction.Normalize();
 
-        if (direction.magnitude >= 0.1f)
+        if (_direction.magnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
+            float targetAngle = Mathf.Atan2(_direction.z, _direction.x) * Mathf.Rad2Deg;
 
             _hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
-
-            _hip.AddForce(direction * MyPlayerSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
+            //_hip.AddForce(_direction * MyPlayerSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
 
             if(!_falling)
                 _running = true;
@@ -126,15 +126,23 @@ public class PlayerController : MonoBehaviour
             _running = false;
         }
 
-        if(direction != Vector3.zero)
+        if(_direction != Vector3.zero)
         {
-            HandleRotation(direction);
+            HandleRotation(_direction);
         }
 
         if (!_falling)
         {
             _targetAnimator.SetBool(_fall, false);
             _targetAnimator.SetBool(_run, _running);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (_direction.magnitude >= 0.1f)
+        {
+            _hip.AddForce(_direction * MyPlayerSpeed, ForceMode.Impulse);
         }
     }
     void HandleRotation(Vector3 dir)

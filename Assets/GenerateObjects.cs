@@ -35,8 +35,8 @@ void Start()
 void generateObjectOnTerrain()
 {
     //Generate random x,z,y position on the terrain
-    float randX = UnityEngine.Random.Range(xTerrainPos, xTerrainPos + terrainWidth);
-    float randZ = UnityEngine.Random.Range(zTerrainPos, zTerrainPos + terrainLength);
+    float randX = UnityEngine.Random.Range(-300f, 300f);
+    float randZ = UnityEngine.Random.Range(-300f, 250f);
     float yVal = Terrain.activeTerrain.SampleHeight(new Vector3(randX, 0, randZ));
 
     //Apply Offset if needed

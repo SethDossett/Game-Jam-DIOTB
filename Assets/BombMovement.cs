@@ -40,7 +40,7 @@ public class BombMovement : MonoBehaviour
 
     public void PhysicsExplode()
     {
-        playerRB.AddExplosionForce(bombForce,transform.position,5000,3000);       
+        playerRB.AddExplosionForce(bombForce,transform.position,5000,6000);       
         FindObjectOfType<PointSystem>().AddPoints(bombPoints);
     }
     
@@ -50,7 +50,7 @@ public class BombMovement : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(2, 8));
             PickNewWayPoint();
-            StartCoroutine("RandomWaypointLoop");
+            //StartCoroutine("RandomWaypointLoop");
         }
     }
 

@@ -510,12 +510,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 3817008698705132082, guid: 31a3db2cf44c09a43a510da144599ff9, type: 3}
-  - {fileID: 8978798414586850843, guid: 8b92a8a3e287ba64fab20289372cf2be, type: 3}
-  - {fileID: 1409306008855259284, guid: f2d08f90e751f1d4ba09cd02a5ad805a, type: 3}
   - {fileID: 1845666750968647766, guid: 2ed082ce16334994d86f7db9adf0319f, type: 3}
   terrain: {fileID: 7569112024815726445}
   yOffset: 0.5
-  prefabCount: 20
+  prefabCount: 40
 --- !u!1 &7569112024883923203
 GameObject:
   m_ObjectHideFlags: 0

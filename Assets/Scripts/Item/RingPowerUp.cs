@@ -15,7 +15,7 @@ public class RingPowerUp : MonoBehaviour
     private void Start()
     {
         _ring = transform.parent;
-        _position = new Vector3(Random.Range(-300f, 300f), Random.Range(30f, 180f), Random.Range(-300, 300));
+        _position = new Vector3(Random.Range(-300f, 300f), Random.Range(10f, 180f), Random.Range(-300, 230));
         _scale = new Vector3(Random.Range(1f, 3f), 1f, 1f);
         _scale.y = _scale.x;
         _scale.z = _scale.x;

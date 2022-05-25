@@ -10060,7 +10060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88280278b7a2c90458451a20722d4ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypointRadius: 30
+  waypointRadius: 250
   bombForce: 80000
   bombPoints: 60000
 --- !u!1 &3817025388406123612
