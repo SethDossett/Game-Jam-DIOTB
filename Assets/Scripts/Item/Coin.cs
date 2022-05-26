@@ -6,7 +6,7 @@ public class Coin : MonoBehaviour
 {
     [SerializeField] int _coinAmount;
 
-    string _colliderTag = "Collision";
+    string _colliderTag = "Player";
     Vector3 _coinAxis = Vector3.up;
     bool _coinCollected = false;
     MeshRenderer _meshRenderer;
