@@ -1935,6 +1935,7 @@ MonoBehaviour:
   _healthText: {fileID: 2105312982804152822}
   _promptText: {fileID: 2105312981671461818}
   _scoreText: {fileID: 5806110928896660413}
+  _pointsToAdd: {fileID: 7079548517792484774}
   _time: 0
   _incrimentValue: 100
 --- !u!1 &2105312982804152820

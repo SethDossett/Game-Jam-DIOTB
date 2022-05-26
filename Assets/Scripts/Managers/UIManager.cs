@@ -14,11 +14,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] GeneralEventSO _addPoints;
 
     [Header("Texts")]
-    [SerializeField] TextMeshProUGUI  _timeText, _healthText, _promptText, _scoreText;
+    [SerializeField] TextMeshProUGUI  _timeText, _healthText, _promptText, _scoreText, _pointsToAdd;
 
     [Header("Values")]
     [SerializeField] float _time;
     int _currentPoints;
+    int _totalPoints;
     [SerializeField] int _incrimentValue = 100;
     bool _countDown = true;
 
@@ -33,6 +34,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _time = 7f;
+        _totalPoints = 0;
         _currentPoints = 0;
         _scoreText.text = _currentPoints.ToString();
         _countDown = true;
@@ -62,17 +64,29 @@ public class UIManager : MonoBehaviour
     private void AddPoints()
     {
         StartCoroutine(UpdatePoints());
+        
     }
     private IEnumerator UpdatePoints()
     {
         int points = _pointSystem.GetComponent<PointSystem>().GetPoints();
-        while(_currentPoints < points)
+        StartCoroutine(PointsToAdd(points));
+        _totalPoints += points;
+
+        while (_currentPoints < _totalPoints)
         {
             _currentPoints += _incrimentValue;
             _scoreText.text = _currentPoints.ToString();
             yield return null;
         }
         
+    }
+    private IEnumerator PointsToAdd(int points)
+    {
+        _pointsToAdd.text = $"+ {points}";
+        yield return new WaitForEndOfFrame();
+        yield return new WaitUntil(() => _currentPoints >= _totalPoints);
+        _pointsToAdd.text = "Score";
+
     }
     private void CountDown()
     {
