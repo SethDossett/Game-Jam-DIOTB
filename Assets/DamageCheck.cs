@@ -24,7 +24,7 @@ public class DamageCheck : MonoBehaviour
         if (!playerHealth.invincible)
         {
             int hitStrength = (int) (other.impulse.magnitude * damageMultiplier*.1f);
-            print("Damage " + other.impulse.magnitude * damageMultiplier*.1f);
+            print("Impulse: " + other.impulse.magnitude + ", Damage " + other.impulse.magnitude * damageMultiplier*.1f);
             
             //pointSystem.AddPoints(hitStrength * hitStrength);
             playerHealth.TakeDamage(hitStrength);

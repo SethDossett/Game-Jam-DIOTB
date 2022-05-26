@@ -12,7 +12,7 @@ public class BombMovement : MonoBehaviour
     private Vector3 currentWaypoint;
     
     public float waypointRadius;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private Animator anim;
     private Rigidbody playerRB;
 
@@ -40,7 +40,8 @@ public class BombMovement : MonoBehaviour
 
     public void PhysicsExplode()
     {
-        playerRB.AddExplosionForce(bombForce,transform.position,5000,6000);       
+        playerRB.AddExplosionForce(bombForce,transform.position,5000,6000); 
+        FindObjectOfType<Health>().TakeDamage(45);
         FindObjectOfType<PointSystem>().AddPoints(bombPoints);
     }
     

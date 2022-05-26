@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image _healthBar;
     [SerializeField] GameObject _timer;
     [SerializeField] GameObject _pointSystem;
+    [SerializeField] GameObject deadScreen;
+    [SerializeField] GameObject loseScreen;
+    [SerializeField] GameObject gameMusic;
     [SerializeField] GeneralEventSO _addPoints;
 
     [Header("Texts")]
@@ -49,8 +52,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHealth(int newHealth)
     {
-        print("update health input " + newHealth + ". changing fill amount from " + _healthBar.fillAmount);
-        _healthBar.fillAmount = 100f/(float)newHealth;
+        print("update health input " + newHealth *.01f+ ". changing fill amount from " + _healthBar.fillAmount);
+        _healthBar.fillAmount = newHealth*.01f;
         print("to" + _healthBar.fillAmount);
         _healthText.text = Mathf.RoundToInt(_healthBar.fillAmount * 100).ToString() + "%";
     }
@@ -99,5 +102,18 @@ public class UIManager : MonoBehaviour
         min = (min % 60);
 
         _timeText.text = $"{min}:{(Mathf.RoundToInt(_time) % 60).ToString("D2")}";
+    }
+
+    public void ShowDeadScreen()
+    {
+        gameMusic.SetActive(false);
+        deadScreen.SetActive(true);
+    }
+
+    public void ShowLoseScreen()
+    {
+        loseScreen.SetActive(true);
+        deadScreen.SetActive(false);
+
     }
 }

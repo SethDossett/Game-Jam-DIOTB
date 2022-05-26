@@ -48,9 +48,9 @@ public class RingPowerUp : MonoBehaviour
     }
     IEnumerator GreenPowerUp(PlayerController pc, Rigidbody rb)
     {
-        pc.MyPlayerSpeed = 3000f;
+        pc.MyPlayerSpeed = 1.5f;
         yield return new WaitForSeconds(1f);
-        pc.MyPlayerSpeed = 500f;
+        pc.MyPlayerSpeed = 1f;
         yield break;
     }
     IEnumerator BluePowerUp(PlayerController pc, Rigidbody rb)

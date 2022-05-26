@@ -12,6 +12,8 @@ public class LavaBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             FindObjectOfType<PointSystem>().AddPoints(LavaPoints);
+            FindObjectOfType<Health>().TakeDamage(100);
+            
         }
     }
 

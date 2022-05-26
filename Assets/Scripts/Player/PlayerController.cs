@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     public GameObject backgroundMusic;
     public GameObject skydiveSoundRegion;
     public GameObject skydiveSoundRegion2;
+
+    public bool dead;
+    
     void Start()
     {
         playerHealth = GetComponent<Health>();
@@ -53,7 +56,6 @@ public class PlayerController : MonoBehaviour
 
     void EnableJumping()
     {
-        print("jump");
         canJump = true;
         GoUI.SetActive(true);
         Invoke("TurnOffGoUI", 3);
@@ -97,13 +99,17 @@ public class PlayerController : MonoBehaviour
                 
             }
             _falling = true;
-
         }
-
     }
 
     void HandleMovement()
     {
+        if (dead && _hip.velocity.magnitude < .5f)
+        {
+            FindObjectOfType<UIManager>().ShowLoseScreen();
+            MyPlayerSpeed = 0;
+            Time.timeScale = 0f;
+        }
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
@@ -177,7 +183,7 @@ public class PlayerController : MonoBehaviour
             else return;
 ;       }
 
-        if (_falling)
+        if (_falling || dead)
         {
             _targetAnimator.SetBool(_run, false);
             _targetAnimator.SetBool(_fall, true);
