@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RingPowerUp : MonoBehaviour
 {
@@ -11,9 +13,13 @@ public class RingPowerUp : MonoBehaviour
     Transform _ring;
     Vector3 _position;
     Vector3 _scale;
-
+    public float ringPushForce = 10;
+    private bool _ringCollected;
+    private CharacterSounds sounds;
+     
     private void Start()
     {
+        sounds = FindObjectOfType<CharacterSounds>();
         _ring = transform.parent;
         _position = new Vector3(Random.Range(-300f, 300f), Random.Range(10f, 180f), Random.Range(-300, 230));
         _scale = new Vector3(Random.Range(1f, 3f), 1f, 1f);
@@ -36,9 +42,27 @@ public class RingPowerUp : MonoBehaviour
             if (RingColor == 1) StartCoroutine(GreenPowerUp(pc, rb));
 
             if (RingColor == 2) StartCoroutine(BluePowerUp(pc, rb));
+            _ringCollected = true;
+            sounds.PlaySound("RingPowerUp");
+
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (_ringCollected) return;
+
+        Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+
+        var collisionNormal = transform.position - other.ClosestPoint(transform.position);
+
+        if (collisionNormal.y < 0)
+        {
+            collisionNormal *= -1f;
+        }
+            
+        rb.AddForce(collisionNormal * ringPushForce);
+    }
 
     IEnumerator RedPowerUp(PlayerController pc , Rigidbody rb)
     {

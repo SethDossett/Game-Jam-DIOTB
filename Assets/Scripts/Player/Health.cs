@@ -28,11 +28,12 @@ public class Health : MonoBehaviour
         {
             StartCoroutine("SloMo");
             FindObjectOfType<PlayerController>().dead = true;
-            FindObjectOfType<PlayerController>().MyPlayerSpeed = 5f;
+            FindObjectOfType<PlayerController>().MyPlayerSpeed = 20f;
             BombMovement[] bombs = FindObjectsOfType<BombMovement>();
             foreach (var bomb in bombs)
             {
-                bomb.agent.speed = .1f;
+                bomb.agent.speed = 0f;
+                //bomb.GetComponent<Animator>().
             }
             UI.ShowDeadScreen();
         }
@@ -40,20 +41,15 @@ public class Health : MonoBehaviour
 
     IEnumerator SloMo()
     {
-        Time.timeScale = .1f;
+        Time.timeScale = .3f;
         while (Time.timeScale <1f)
         {
-            Time.timeScale += Time.deltaTime * .2f;
+            Time.timeScale += Time.deltaTime * .4f;
             yield return null;
         }
     }
     void InvincibleCooldown()
     {
         invincible = false;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

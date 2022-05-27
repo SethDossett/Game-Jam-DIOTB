@@ -360,7 +360,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.05, z: 0}
   m_Axis: {x: 1, y: 0, z: 90}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 31.39314, z: 0.6273544}
+  m_ConnectedAnchor: {x: 0, y: 23.965452, z: -0.32605094}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa0fa2f1e5a1de47a2d8be46ce8c727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 3700000
+  turnSpeed: 7770000
 --- !u!1001 &1409306008459827069
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ public class CharacterSounds : MonoBehaviour
         audio = GetComponent<AudioSource>();
     }
 
+    
+    
     public void PlaySound(string clipName)
     {
         foreach (var clip in clips)

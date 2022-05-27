@@ -110,6 +110,7 @@ public class PlayerController : MonoBehaviour
             MyPlayerSpeed = 0;
             Time.timeScale = 0f;
         }
+        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
