@@ -43,7 +43,6 @@ public class Coin : MonoBehaviour
 
     void CollectCoin()
     {
-        print("CoinHIT");
         _coinCollected = true;
         _audioSource.Play();
         _ps.Play();
