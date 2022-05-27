@@ -35,10 +35,12 @@ public class PlayerController : MonoBehaviour
     public GameObject skydiveSoundRegion;
     public GameObject skydiveSoundRegion2;
 
+    private UIManager _uiManager;
     public bool dead;
     
     void Start()
     {
+        _uiManager = FindObjectOfType<UIManager>();
         playerHealth = GetComponent<Health>();
         _rbs = gameObject.GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody rb in _rbs)
@@ -106,7 +108,7 @@ public class PlayerController : MonoBehaviour
     {
         if (dead && _hip.velocity.magnitude < .5f)
         {
-            FindObjectOfType<UIManager>().ShowLoseScreen();
+            _uiManager.ShowLoseScreen();
             MyPlayerSpeed = 0;
             Time.timeScale = 0f;
         }

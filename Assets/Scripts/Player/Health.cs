@@ -10,11 +10,13 @@ public class Health : MonoBehaviour
 
     public float invincibleCooldownTime = 2;
     private UIManager UI;
+    private PlayerController playerController;
     
     // Start is called before the first frame update
     void Start()
     {
         UI = FindObjectOfType<UIManager>();
+        playerController = GetComponentInParent<PlayerController>();
     }
 
     public void TakeDamage(int damage)
@@ -27,8 +29,8 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             StartCoroutine("SloMo");
-            FindObjectOfType<PlayerController>().dead = true;
-            FindObjectOfType<PlayerController>().MyPlayerSpeed = 5f;
+            playerController.dead = true;
+            playerController.MyPlayerSpeed = 5f;
             BombMovement[] bombs = FindObjectsOfType<BombMovement>();
             foreach (var bomb in bombs)
             {

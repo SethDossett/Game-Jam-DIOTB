@@ -41,7 +41,7 @@ public class BombMovement : MonoBehaviour
     public void PhysicsExplode()
     {
         playerRB.AddExplosionForce(bombForce,transform.position,5000,6000); 
-        FindObjectOfType<Health>().TakeDamage(45);
+        playerRB.gameObject.GetComponentInParent<Health>().TakeDamage(45);
         FindObjectOfType<PointSystem>().AddPoints(bombPoints);
     }
     
