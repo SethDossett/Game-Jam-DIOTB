@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _coinUI;
     [SerializeField] Image _juiceBar;
     [SerializeField] GameObject _jetPackUI;
+    [SerializeField] GameObject _jetPackEnabledScreen;
     [SerializeField] GameObject deadScreen;
     [SerializeField] GameObject _gameOverScreen;
     [SerializeField] GameObject gameMusic;
@@ -140,6 +141,7 @@ public class UIManager : MonoBehaviour
         gameMusic.SetActive(false);
         deadScreen.SetActive(true);
         _coinUI.SetActive(true); 
+        _jetPackEnabledScreen.SetActive(true);
         _jetPackUI.SetActive(true);
     }
 
