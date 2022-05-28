@@ -14,9 +14,10 @@ public class BombMovement : MonoBehaviour
     public float waypointRadius;
     public NavMeshAgent agent;
     private Animator anim;
-    private Rigidbody playerRB;
+    private List<Rigidbody> playerRBs;
 
     public float bombForce;
+    public float upwardsForce;
     public int bombPoints;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,18 @@ public class BombMovement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         StartCoroutine("RandomWaypointLoop");
+
+        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
+        playerRBs = new List<Rigidbody>();
+
+        foreach (var o in playerObjects)
+        {
+            Rigidbody rb = o.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                playerRBs.Add(rb);
+            }
+        }
 
     }
 
@@ -34,14 +47,15 @@ public class BombMovement : MonoBehaviour
         {
             anim.Play("attack01");
             agent.speed = 0;
-            playerRB = other.gameObject.GetComponent<Rigidbody>();
         }
     }
 
     public void PhysicsExplode()
     {
-        print("bomb");
-        playerRB.AddExplosionForce(bombForce,transform.position,5000,2000000); 
+        foreach (var rb in playerRBs)
+        {
+            rb.AddExplosionForce(bombForce,transform.position,5000,upwardsForce);
+        }
         FindObjectOfType<Health>().TakeDamage(15);
         FindObjectOfType<PointSystem>().AddPoints(bombPoints);
     }

@@ -35,23 +35,30 @@ public class PlayerController : MonoBehaviour
     public GameObject backgroundMusic;
     public GameObject skydiveSoundRegion;
     public GameObject skydiveSoundRegion2;
-
+    public Rigidbody[] playerRBs;
+    public GameObject dynamite;
     private UIManager _uiManager;
     [SerializeField] GeneralEventSO _dead;
     public bool dead;
+
 
     private void OnEnable()
     {
         _dead.OnRaiseEvent += DeadChanges;
     }
+    
     private void OnDisable()
     {
         _dead.OnRaiseEvent -= DeadChanges;
     }
+    
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
+
+    
+        playerRBs = GetComponentsInChildren<Rigidbody>();
         _uiManager = FindObjectOfType<UIManager>();
         playerHealth = GetComponent<Health>();
         _rbs = gameObject.GetComponentsInChildren<Rigidbody>();
@@ -119,14 +126,7 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        if (dead && _hip.velocity.magnitude < .5f)
-        {
-            ChangeCameraAnim(_fallingCam);
-            _uiManager.ShowLoseScreen();
-            MyPlayerSpeed = 0;
-            Time.timeScale = 0f;
-            Cursor.lockState = CursorLockMode.None;
-        }
+
         
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -185,12 +185,21 @@ public class PlayerController : MonoBehaviour
     {
         if (IsGrounded())
         {
+            if (dead)
+            {
+                _uiManager.ShowLoseScreen();
+                MyPlayerSpeed = 0;
+                Time.timeScale = 0f;
+                Cursor.lockState = CursorLockMode.None;
+
+            }
+            
             if (_falling)
                 _falling = false;
             else return;
 ;       }
 
-        if (_falling || dead)
+        if (_falling)
         {
             _targetAnimator.SetBool(_run, false);
             _targetAnimator.SetBool(_fall, true);
