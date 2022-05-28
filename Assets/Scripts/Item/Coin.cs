@@ -5,7 +5,6 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     [SerializeField] int _coinAmount;
-
     string _colliderTag = "Player";
     Vector3 _coinAxis = Vector3.up;
     bool _coinCollected = false;
@@ -13,16 +12,18 @@ public class Coin : MonoBehaviour
     AudioSource _audioSource;
     ParticleSystem _ps;
     PointSystem _pointSystem;
+    UIManager _UIManager;
+    
     void Start()
     {
         _pointSystem = FindObjectOfType<PointSystem>();
+        _UIManager = FindObjectOfType<UIManager>();
         _meshRenderer = GetComponent<MeshRenderer>();
         _audioSource = GetComponent<AudioSource>();
         _ps = GetComponent<ParticleSystem>();
         _meshRenderer.enabled = true;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         transform.Rotate(45f * Time.deltaTime * _coinAxis, Space.World);
@@ -48,6 +49,7 @@ public class Coin : MonoBehaviour
         _ps.Play();
         _meshRenderer.enabled = false;
         _pointSystem.AddPoints(_coinAmount);
+        _UIManager.UpdateCoins();
         Destroy(gameObject, 2f);
     }
 }

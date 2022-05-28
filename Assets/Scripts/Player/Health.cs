@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     public float invincibleCooldownTime = 2;
     private UIManager UI;
     private PlayerController playerController;
-    
+    [SerializeField] GeneralEventSO _dead;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +29,7 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             StartCoroutine("SloMo");
+            _dead.RaiseEvent();
             playerController.dead = true;
             playerController.MyPlayerSpeed = 20f;
             BombMovement[] bombs = FindObjectsOfType<BombMovement>();

@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ConfigurableJoint _hipJoint;
     [SerializeField] private Rigidbody _hip;
     [SerializeField] private Transform _animTransform;
+    [SerializeField] private GameObject _jetPack;
     Rigidbody[] _rbs;
     Health playerHealth;
     [SerializeField] LayerMask _groundLayer;
@@ -36,13 +37,25 @@ public class PlayerController : MonoBehaviour
     public GameObject skydiveSoundRegion2;
 
     private UIManager _uiManager;
+    [SerializeField] GeneralEventSO _dead;
     public bool dead;
-    
+
+    private void OnEnable()
+    {
+        _dead.OnRaiseEvent += DeadChanges;
+    }
+    private void OnDisable()
+    {
+        _dead.OnRaiseEvent -= DeadChanges;
+    }
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
         _uiManager = FindObjectOfType<UIManager>();
         playerHealth = GetComponent<Health>();
         _rbs = gameObject.GetComponentsInChildren<Rigidbody>();
+        _jetPack.SetActive(false);
         foreach (Rigidbody rb in _rbs)
         {
             rb.isKinematic = true;
@@ -108,9 +121,11 @@ public class PlayerController : MonoBehaviour
     {
         if (dead && _hip.velocity.magnitude < .5f)
         {
+            ChangeCameraAnim(_fallingCam);
             _uiManager.ShowLoseScreen();
             MyPlayerSpeed = 0;
             Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
         }
         
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -166,17 +181,6 @@ public class PlayerController : MonoBehaviour
     {
         _camAnim.Play(hash);
     }
-    private void OnApplicationFocus(bool focus)
-    {
-        if (focus)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
-    }
     void CheckFalling()
     {
         if (IsGrounded())
@@ -193,7 +197,10 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
+    void DeadChanges()
+    {
+        _jetPack.SetActive(true);
+    }
     bool IsGrounded()
     {
         if (_falling)

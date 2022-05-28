@@ -7,20 +7,23 @@ using System;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI _timeText, _healthText, _promptText, _scoreText, _pointsToAdd, _gameOverScore, _coinText;
+
     [Header("References")]
     [SerializeField] Image _healthBar;
     [SerializeField] GameObject _timer;
     [SerializeField] GameObject _pointSystem;
+    [SerializeField] GameObject _coinUI;
+    [SerializeField] Image _juiceBar;
+    [SerializeField] GameObject _jetPackUI;
     [SerializeField] GameObject deadScreen;
-    [SerializeField] GameObject loseScreen;
+    [SerializeField] GameObject _gameOverScreen;
     [SerializeField] GameObject gameMusic;
     [SerializeField] GeneralEventSO _addPoints;
 
-    [Header("Texts")]
-    [SerializeField] TextMeshProUGUI  _timeText, _healthText, _promptText, _scoreText, _pointsToAdd;
-
     [Header("Values")]
     [SerializeField] float _time;
+    [SerializeField] int _coinAmount;
     int _currentPoints;
     int _totalPoints;
     [SerializeField] int _incrimentValue = 100;
@@ -40,6 +43,10 @@ public class UIManager : MonoBehaviour
         _totalPoints = 0;
         _currentPoints = 0;
         _scoreText.text = _currentPoints.ToString();
+        _coinAmount = 0;
+        _coinText.text = "0";
+        _coinUI.SetActive(false);
+        _jetPackUI.SetActive(false);
         _countDown = true;
         CountDown();
     }
@@ -63,6 +70,16 @@ public class UIManager : MonoBehaviour
     public void UpdatePrompt(string message)
     {
         _promptText.text = message;
+    }
+    public void UpdateCoins()
+    {
+        _coinAmount++;
+
+        _coinText.text = _coinAmount.ToString();
+    }
+    public void UpdateJetJuice(float juice)
+    {
+        _juiceBar.fillAmount = juice * 0.1f;
     }
     private void AddPoints()
     {
@@ -122,12 +139,15 @@ public class UIManager : MonoBehaviour
     {
         gameMusic.SetActive(false);
         deadScreen.SetActive(true);
+        _coinUI.SetActive(true); 
+        _jetPackUI.SetActive(true);
     }
 
     public void ShowLoseScreen()
     {
-        loseScreen.SetActive(true);
+        _gameOverScreen.SetActive(true);
         deadScreen.SetActive(false);
+        _gameOverScore.text = _totalPoints.ToString();
 
     }
 }

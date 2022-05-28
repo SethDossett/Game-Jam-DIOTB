@@ -13,7 +13,7 @@ public class PointSystem : MonoBehaviour
     {
         
     }
-
+    
     public void AddPoints(int pointsEarned)
     {
         _pointsEarned = pointsEarned;
