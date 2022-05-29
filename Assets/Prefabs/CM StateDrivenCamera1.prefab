@@ -423,7 +423,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380433212306960624}
   m_LocalRotation: {x: 0.26290506, y: -0, z: -0, w: 0.96482176}
-  m_LocalPosition: {x: -17.787994, y: 32.416824, z: 92.49567}
+  m_LocalPosition: {x: -17.787994, y: 54.11682, z: 92.49567}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1380433212112321500}
@@ -905,7 +905,7 @@ MonoBehaviour:
   m_YAxis:
     Value: 0.5
     m_SpeedMode: 0
-    m_MaxSpeed: 1.5
+    m_MaxSpeed: 2.5
     m_AccelTime: 0.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -922,8 +922,8 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
     m_enabled: 1
-    m_WaitTime: 0
-    m_RecenteringTime: 0.75
+    m_WaitTime: 5
+    m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:

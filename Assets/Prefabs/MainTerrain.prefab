@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 182981470}
   m_Layer: 7
   m_Name: Terrain_(-1370.0, 0.0, -1866.0)
-  m_TagString: Untagged
+  m_TagString: Collision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 329973504}
   m_Layer: 7
   m_Name: Terrain_(630.0, 0.0, -1866.0)
-  m_TagString: Untagged
+  m_TagString: Collision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 691451560}
   m_Layer: 7
   m_Name: Terrain_(-370.0, 0.0, -1866.0)
-  m_TagString: Untagged
+  m_TagString: Collision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 3764863842697116028}
   m_Layer: 7
   m_Name: MainTerrain
-  m_TagString: Untagged
+  m_TagString: Collision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 7569112024416149783}
   m_Layer: 7
   m_Name: Terrain_(-1000.0, 0.0, 0.0)
-  m_TagString: Untagged
+  m_TagString: Collision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 7569112024729916439}
   m_Layer: 7
   m_Name: Terrain_(0.0, 0.0, 1000.0)
-  m_TagString: Untagged
+  m_TagString: Collision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 1001747176}
   m_Layer: 7
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Collision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 7569112024883923202}
   m_Layer: 7
   m_Name: Terrain_(-1000.0, 0.0, 1000.0)
-  m_TagString: Untagged
+  m_TagString: Collision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 7569112025535669762}
   m_Layer: 7
   m_Name: Terrain_(1000.0, 0.0, 1000.0)
-  m_TagString: Untagged
+  m_TagString: Collision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 7569112025868351057}
   m_Layer: 7
   m_Name: Terrain_(1000.0, 0.0, 0.0)
-  m_TagString: Untagged
+  m_TagString: Collision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

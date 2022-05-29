@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private bool _inAirPlane = true;
     
     public GameObject GoUI;
+    public TextMeshProUGUI UIText;
     private bool canJump = false;
     public GameObject backgroundMusic;
     public GameObject skydiveSoundRegion;
@@ -40,7 +42,7 @@ public class PlayerController : MonoBehaviour
     private UIManager _uiManager;
     [SerializeField] GeneralEventSO _dead;
     public bool dead;
-
+    public bool autoDrop;
 
     private void OnEnable()
     {
@@ -80,6 +82,7 @@ public class PlayerController : MonoBehaviour
     {
         canJump = true;
         GoUI.SetActive(true);
+        UIText.text = "GO!";
         Invoke("TurnOffGoUI", 3);
 
     }
@@ -110,7 +113,7 @@ public class PlayerController : MonoBehaviour
             CheckFalling();
         }
 
-        if (canJump && Input.GetKeyDown(KeyCode.Space))
+        if (canJump && Input.GetKeyDown(KeyCode.Space) || autoDrop)
         {
             if (_inAirPlane)
             {
@@ -118,9 +121,13 @@ public class PlayerController : MonoBehaviour
                 backgroundMusic.SetActive(true);
                 skydiveSoundRegion.SetActive(true);
                 skydiveSoundRegion2.SetActive(true);
-                
+                _targetAnimator.SetBool(_run, false);
+                _targetAnimator.SetBool(_fall, true);
+                _falling = true;
+                autoDrop = false;
+                canJump = false;
             }
-            _falling = true;
+            
         }
     }
 
@@ -142,12 +149,18 @@ public class PlayerController : MonoBehaviour
             _hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
             //_hip.AddForce(_direction * MyPlayerSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
 
-            if(!_falling)
+            if (!_falling)
+            {
                 _running = true;
+                _targetAnimator.SetBool(_run, true);
+            }
+
+            
         }
         else
         {
             _running = false;
+            _targetAnimator.SetBool(_run, false);
         }
 
         if(_direction != Vector3.zero)
@@ -155,11 +168,6 @@ public class PlayerController : MonoBehaviour
             HandleRotation(_direction);
         }
 
-        if (!_falling)
-        {
-            _targetAnimator.SetBool(_fall, false);
-            _targetAnimator.SetBool(_run, _running);
-        }
     }
 
     private void FixedUpdate()
@@ -196,14 +204,10 @@ public class PlayerController : MonoBehaviour
             
             if (_falling)
                 _falling = false;
-            else return;
-;       }
 
-        if (_falling)
-        {
-            _targetAnimator.SetBool(_run, false);
-            _targetAnimator.SetBool(_fall, true);
-        }
+            _targetAnimator.SetBool(_fall, false);
+;       }
+        
 
     }
     void DeadChanges()
@@ -214,7 +218,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_falling)
         {
-            return Physics.Raycast(_hip.gameObject.transform.position, Vector3.down, out RaycastHit hitinfo, 10f, _groundLayer);
+            return Physics.Raycast(_hip.gameObject.transform.position, Vector3.down, out RaycastHit hitinfo, 2f, _groundLayer);
 
         }
         else return false;
@@ -223,8 +227,7 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawRay(_hip.gameObject.transform.position, Vector3.down * 10f);
+        Gizmos.DrawRay(_hip.gameObject.transform.position, Vector3.down * 2f);
     }
-
 
 }

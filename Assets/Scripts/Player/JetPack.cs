@@ -27,7 +27,7 @@ public class JetPack : MonoBehaviour
     }
     void CheckInput()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetMouseButton(0))
         {
             if (!_jetsOn)
             {

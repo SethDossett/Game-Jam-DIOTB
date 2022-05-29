@@ -6,7 +6,7 @@ public class EnableDisable : MonoBehaviour
 {
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButton(0))
         {
             this.gameObject.SetActive(false);
         }

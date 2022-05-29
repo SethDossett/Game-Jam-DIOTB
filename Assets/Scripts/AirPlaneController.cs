@@ -5,14 +5,16 @@ using UnityEngine;
 public class AirPlaneController : MonoBehaviour
 {
     [SerializeField] float _speed = 5f;
-    [SerializeField] float timeTillDisappear = 5f;
+    [SerializeField] float timeTillDisappear = 30f;
+    [SerializeField] float timeTillForcedDrop = 26f;
     float timer;
 
-
+    PlayerController playerController;
 
     void Start()
     {
         timer = 0;
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     
@@ -23,6 +25,14 @@ public class AirPlaneController : MonoBehaviour
         if(timer < timeTillDisappear)
         {
             transform.Translate(_speed * Time.deltaTime * transform.forward);
+
+            if(timer >= timeTillForcedDrop)
+            {
+                if(playerController.autoDrop == false)
+                {
+                    playerController.autoDrop = true;
+                }
+            }
         }
         else
         {

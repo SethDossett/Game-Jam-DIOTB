@@ -16,13 +16,14 @@ public class RingPowerUp : MonoBehaviour
     public float ringPushForce = 10;
     private bool _ringCollected;
     private CharacterSounds sounds;
-
+    PlayerController _pc;
     private Vector3 collisionNormal;
     private void Start()
     {
+        _pc = FindObjectOfType<PlayerController>();
         sounds = FindObjectOfType<CharacterSounds>();
         _ring = transform.parent;
-        _position = new Vector3(Random.Range(-300f, 300f), Random.Range(25f, 382f), Random.Range(-300, 230));
+        _position = new Vector3(Random.Range(-260f, 260f), Random.Range(25f, 382f), Random.Range(-280, 230));
         _scale = new Vector3(Random.Range(.7f, 3f), 1f, 1f);
         _scale.y = _scale.x;
         _scale.z = _scale.x;
@@ -34,11 +35,9 @@ public class RingPowerUp : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (_ringCollected) return;
-
+        PlayerController pc = _pc;
         if (other.CompareTag("Player"))
         {
-            PlayerController pc = other.gameObject.GetComponentInParent<PlayerController>();
-
             if (RingColor == 0) StartCoroutine(RedPowerUp(pc));
                                 
             if (RingColor == 1) StartCoroutine(GreenPowerUp(pc));
@@ -70,22 +69,27 @@ public class RingPowerUp : MonoBehaviour
 
     IEnumerator RedPowerUp(PlayerController pc)
     {
-        print("adding push force");
-        foreach (var rb in FindObjectOfType<PlayerController>().playerRBs)
+        pc.GoUI.SetActive(true);
+        pc.UIText.text = "BOOST";
+        foreach (var rb in pc.playerRBs)
         {
             rb.AddForce(collisionNormal * ringPushForce,ForceMode.VelocityChange );
         }
-        
+        yield return new WaitForSeconds(1f);
+        pc.GoUI.SetActive(false);
         yield break;
         //rb.AddRelativeForce(Vector3.up * 500f, ForceMode.Impulse);
     }
     
     IEnumerator GreenPowerUp(PlayerController pc)
     {
-
+        pc.GoUI.SetActive(true);
+        pc.UIText.text = "SPEED INCREASE!";
         float ogSpeed = pc.MyPlayerSpeed;
         pc.MyPlayerSpeed *= 3.4f;
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(1f);
+        pc.GoUI.SetActive(false);
+        yield return new WaitForSeconds(3f);
         pc.MyPlayerSpeed = ogSpeed;
         yield break;
     }
@@ -93,7 +97,7 @@ public class RingPowerUp : MonoBehaviour
     IEnumerator BluePowerUp(PlayerController pc)
     {
         print("Set active to true");
-        FindObjectOfType<PlayerController>().dynamite.SetActive(true);
+        pc.dynamite.SetActive(true);
 
         yield break;
     }
