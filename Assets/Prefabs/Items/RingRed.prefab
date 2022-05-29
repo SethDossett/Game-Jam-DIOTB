@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RingColor: 0
+  ringPushForce: 125
 --- !u!1 &9180914379472595282
 GameObject:
   m_ObjectHideFlags: 0
