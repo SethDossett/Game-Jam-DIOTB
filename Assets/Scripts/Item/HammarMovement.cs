@@ -8,7 +8,9 @@ public class HammarMovement : MonoBehaviour
     public float turnSpeed;
     private Rigidbody rb;
     private Health _health;
-
+    public float hitMultiplyer;
+    private bool hasHit;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +27,20 @@ public class HammarMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        if (hasHit) return;
+
         if (other.gameObject.CompareTag("Player"))
         {
-            print("Taken damage from hammar " + (other.impulse.magnitude * other.impulse.magnitude));
-            _health.TakeDamage((int)(other.impulse.magnitude * other.impulse.magnitude));
+            Invoke("HitCooldown",1f);
+            hasHit = true;
+            int hitStrength = (int) (other.collider.GetComponent<Rigidbody>().velocity.magnitude *hitMultiplyer);
+            print("Taken damage from hammar " + hitStrength);
+            _health.TakeDamage(hitStrength);
         }
 
+    }
+    public void HitCooldown()
+    {
+        hasHit = false;
     }
 }

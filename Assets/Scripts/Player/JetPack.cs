@@ -10,6 +10,8 @@ public class JetPack : MonoBehaviour
     [SerializeField] float _jetSpeed;
     [SerializeField] bool _jetsOn;
     [SerializeField] float _juice;
+    [SerializeField]  Transform jetpackTop;
+    [SerializeField] Transform neckTransform;
 
     UIManager _UIManager;
     void Start()
@@ -20,6 +22,7 @@ public class JetPack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //neckTransform.position = jetpackTop.transform.position;
         transform.position = _playerRB.transform.position + _offset;
         CheckInput();
         CheckJuice();

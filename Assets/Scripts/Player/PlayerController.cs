@@ -104,11 +104,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            ChangeCameraAnim(_playerCam);
-            foreach (Rigidbody rb in _rbs)
-            {
-                rb.isKinematic = false;
-            }
             HandleMovement();
             CheckFalling();
         }
@@ -126,15 +121,18 @@ public class PlayerController : MonoBehaviour
                 _falling = true;
                 autoDrop = false;
                 canJump = false;
+                
+                ChangeCameraAnim(_playerCam);
+                foreach (Rigidbody rb in _rbs)
+                {
+                    rb.isKinematic = false;
+                }
             }
-            
         }
     }
 
     void HandleMovement()
     {
-
-        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
@@ -199,7 +197,6 @@ public class PlayerController : MonoBehaviour
                 MyPlayerSpeed = 0;
                 Time.timeScale = 0f;
                 Cursor.lockState = CursorLockMode.None;
-
             }
             
             if (_falling)
@@ -212,6 +209,7 @@ public class PlayerController : MonoBehaviour
     }
     void DeadChanges()
     {
+        _targetAnimator.SetBool(_fall, false);
         _jetPack.SetActive(true);
     }
     bool IsGrounded()

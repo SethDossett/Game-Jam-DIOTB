@@ -10,6 +10,8 @@ public class TickingTimeBomb : MonoBehaviour
     public Vector3 _offset;
     public Rigidbody _playerRB;
     PlayerController _playerController;
+
+    public float bombForce;
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -25,7 +27,7 @@ public class TickingTimeBomb : MonoBehaviour
         _playerController.GoUI.SetActive(false);
         foreach ( var rb in _playerController.playerRBs)
         {
-            Vector3 spherePoint = Random.insideUnitSphere * Random.RandomRange(100, 200f);
+            Vector3 spherePoint = Random.insideUnitSphere * Random.RandomRange(bombForce, bombForce*1.6f);
             if (spherePoint.y < 0) spherePoint.y *= -1;
             rb.AddForce(spherePoint ,ForceMode.VelocityChange);
             Instantiate(explosion, transform.position, quaternion.identity);

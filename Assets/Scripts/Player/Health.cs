@@ -32,12 +32,6 @@ public class Health : MonoBehaviour
             _dead.RaiseEvent();
             playerController.dead = true;
             playerController.MyPlayerSpeed = 20f;
-            BombMovement[] bombs = FindObjectsOfType<BombMovement>();
-            foreach (var bomb in bombs)
-            {
-                bomb.agent.speed = 0f;
-                bomb.GetComponent<Animator>().speed = 0;
-            }
             UI.ShowDeadScreen();
         }
     }
