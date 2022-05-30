@@ -46,7 +46,7 @@ public class CoinSpawn : MonoBehaviour
 
         for(int i = 0; i < 100; i++)
         {
-            Vector3 pos = new Vector3(Random.Range(-245f, 245f), Random.Range(15f, 120f), Random.Range(-250, 180f));
+            Vector3 pos = new Vector3(Random.Range(-245f, 245f), Random.Range(15f, 200f), Random.Range(-250, 180f));
             Instantiate(_coin, pos, _coin.transform.rotation);
         }
         

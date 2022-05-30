@@ -515,7 +515,7 @@ MonoBehaviour:
   - {fileID: 1409306008855259284, guid: f2d08f90e751f1d4ba09cd02a5ad805a, type: 3}
   terrain: {fileID: 7569112024815726445}
   yOffset: 0.5
-  prefabCount: 40
+  prefabCount: 50
 --- !u!1 &7569112024883923203
 GameObject:
   m_ObjectHideFlags: 0

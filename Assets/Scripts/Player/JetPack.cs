@@ -9,7 +9,8 @@ public class JetPack : MonoBehaviour
     [SerializeField] Vector3 _offset;
     [SerializeField] float _jetSpeed;
     [SerializeField] bool _jetsOn;
-    [SerializeField] float _juice;
+    public float _juice;
+    public float _full;
     [SerializeField]  Transform jetpackTop;
     [SerializeField] Transform neckTransform;
 
@@ -17,6 +18,16 @@ public class JetPack : MonoBehaviour
     void Start()
     {
         _UIManager = FindObjectOfType<UIManager>();
+        if (PlayerPrefs.GetInt("FirstUpgrade") == 1)
+        {
+            _juice = 20f;
+            _full = 20f;
+        }
+        else
+        {
+            _juice = 10f;
+            _full = 10f;
+        }
     }
 
     // Update is called once per frame
@@ -38,7 +49,7 @@ public class JetPack : MonoBehaviour
                 _ps.Play();
                 print(_jetsOn);
             }
-            _UIManager.UpdateJetJuice(_juice);
+            _UIManager.UpdateJetJuice(_juice, _full);
 
         }
         else

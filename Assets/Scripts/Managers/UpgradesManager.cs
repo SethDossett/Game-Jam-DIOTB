@@ -32,15 +32,18 @@ public class UpgradesManager : MonoBehaviour
         GetSavedValues();
     }
 
-    void GetSavedValues()
+    public void GetSavedValues()
     {
         _first = PlayerPrefs.GetInt("FirstUpgrade");
         _second = PlayerPrefs.GetInt("SecondUpgrade");
-        _third = PlayerPrefs.GetInt("ThirdtUpgrade");
+        _third = PlayerPrefs.GetInt("ThirdUpgrade");
 
-        if(_first == 1) _firstButton.text = "Purchased";
+        if (_first == 1) _firstButton.text = "Purchased";
+        else _firstButton.text = "15 Coins";
         if (_second == 1) _secondButton.text = "Purchased";
+        else _secondButton.text = "25 Coins";
         if (_third == 1) _thirdButton.text = "Purchased";
+        else _thirdButton.text = "35 Coins";
 
         
     }
@@ -99,7 +102,7 @@ public class UpgradesManager : MonoBehaviour
             _audioSource.Play();
             _mainText.text = "Purchased";
             _thirdButton.text = "Purchased";
-            PlayerPrefs.SetInt("ThirdtUpgrade", 1);
+            PlayerPrefs.SetInt("ThirdUpgrade", 1);
         }
 
         Invoke("ResetText", 3);

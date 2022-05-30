@@ -11,10 +11,13 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject _options;
     [SerializeField] TextMeshProUGUI _hiscoreText;
 
+    private void Start()
+    {
+        _hiscoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
+    }
     public void StartGame()
     {
         StartCoroutine(LoadScene());
-        _hiscoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
     }
 
     IEnumerator LoadScene()

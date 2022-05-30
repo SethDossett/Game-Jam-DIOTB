@@ -7,7 +7,7 @@ using System;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI _timeText, _healthText, _promptText, _scoreText, _pointsToAdd, _gameOverScore, _coinText;
+    [SerializeField] TextMeshProUGUI _timeText, _healthText, _promptText, _scoreText, _pointsToAdd, _gameOverScore, _coinText, _gameOverCoinText;
 
     [Header("References")]
     [SerializeField] Image _healthBar;
@@ -44,6 +44,7 @@ public class UIManager : MonoBehaviour
         _time = 7f;
         _totalPoints = 0;
         _currentPoints = 0;
+        _gameOverCoinText.text = _coinAmount.ToString();
         _scoreText.text = _currentPoints.ToString();
         _coinAmount = 0;
         _coinText.text = "0";
@@ -80,9 +81,9 @@ public class UIManager : MonoBehaviour
 
         _coinText.text = _coinAmount.ToString();
     }
-    public void UpdateJetJuice(float juice)
+    public void UpdateJetJuice(float juice, float full)
     {
-        _juiceBar.fillAmount = juice * 0.1f;
+        _juiceBar.fillAmount = juice / full;
     }
     private void AddPoints()
     {
@@ -157,8 +158,8 @@ public class UIManager : MonoBehaviour
         {
             _newHighScore.SetActive(true);
         }
-         _gameOverScore.text = _totalPoints.ToString();
-        
+        _gameOverScore.text = _totalPoints.ToString();
+        _gameOverCoinText.text = _coinAmount.ToString();
         
         
         

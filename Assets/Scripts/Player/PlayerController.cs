@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody _hip;
     [SerializeField] private Transform _animTransform;
     [SerializeField] private GameObject _jetPack;
+    [SerializeField] private GameObject _hair;
     Rigidbody[] _rbs;
     Health playerHealth;
     [SerializeField] LayerMask _groundLayer;
@@ -58,7 +60,7 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
-
+        CheckForUpgrade();
     
         playerRBs = GetComponentsInChildren<Rigidbody>();
         _uiManager = FindObjectOfType<UIManager>();
@@ -76,6 +78,34 @@ public class PlayerController : MonoBehaviour
         }
     
         Invoke("EnableJumping", 7);
+    }
+
+    private void CheckForUpgrade()
+    {
+        Debug.Log("first" + PlayerPrefs.GetInt("FirstUpgrade"));
+        Debug.Log("2nd" + PlayerPrefs.GetInt("SecondUpgrade"));
+        Debug.Log("3rd" + PlayerPrefs.GetInt("ThirdUpgrade"));
+
+        if (PlayerPrefs.GetInt("SecondUpgrade") == 1)
+        {
+            MyPlayerSpeed = 50f;
+        }
+        else
+        {
+            MyPlayerSpeed = 35f;
+        }
+
+        if (PlayerPrefs.GetInt("ThirdUpgrade") == 1)
+        {
+            _hair.SetActive(false);
+        }
+        else
+        {
+            if (!_hair.activeInHierarchy)
+            {
+                _hair.SetActive(true);
+            }
+        }
     }
 
     void EnableJumping()
