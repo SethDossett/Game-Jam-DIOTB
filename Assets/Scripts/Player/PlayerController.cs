@@ -216,13 +216,7 @@ public class PlayerController : MonoBehaviour
     }
     bool IsGrounded()
     {
-        if (_falling)
-        {
-            return Physics.Raycast(_hip.gameObject.transform.position, Vector3.down, out RaycastHit hitinfo, 2f, _groundLayer);
-
-        }
-        else return false;
-
+         return Physics.Raycast(_hip.gameObject.transform.position, Vector3.down, out RaycastHit hitinfo, 2f, _groundLayer);
     }
     private void OnDrawGizmos()
     {

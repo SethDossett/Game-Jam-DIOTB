@@ -19,14 +19,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _jetPackEnabledScreen;
     [SerializeField] GameObject deadScreen;
     [SerializeField] GameObject _gameOverScreen;
+    [SerializeField] GameObject _newHighScore;
     [SerializeField] GameObject gameMusic;
     [SerializeField] GeneralEventSO _addPoints;
 
     [Header("Values")]
     [SerializeField] float _time;
-    [SerializeField] int _coinAmount;
+    public int _coinAmount;
     int _currentPoints;
-    int _totalPoints;
+    public int _totalPoints;
     [SerializeField] int _incrimentValue = 100;
     bool _countDown = true;
 
@@ -48,6 +49,7 @@ public class UIManager : MonoBehaviour
         _coinText.text = "0";
         _coinUI.SetActive(false);
         _jetPackUI.SetActive(false);
+        _newHighScore.SetActive(false);
         _countDown = true;
         CountDown();
     }
@@ -149,7 +151,17 @@ public class UIManager : MonoBehaviour
     {
         _gameOverScreen.SetActive(true);
         deadScreen.SetActive(false);
-        _gameOverScore.text = _totalPoints.ToString();
+        Cursor.lockState = CursorLockMode.None;
+
+        if(_totalPoints > PlayerPrefs.GetInt("HighScore"))
+        {
+            _newHighScore.SetActive(true);
+        }
+         _gameOverScore.text = _totalPoints.ToString();
+        
+        
+        
+        
 
     }
 }
