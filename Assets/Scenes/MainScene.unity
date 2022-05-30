@@ -108,13 +108,13 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
-    agentSlope: 45
+    agentSlope: 25
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
-    manualCellSize: 0
-    cellSize: 0.16666667
+    manualCellSize: 1
+    cellSize: 0.5
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -148,7 +148,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &46858662
 Transform:
@@ -465,6 +465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CM StateDrivenCamera1
       objectReference: {fileID: 0}
+    - target: {fileID: 1380433211386305409, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
+      propertyPath: m_ChildCameras.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1380433211386305410, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -527,15 +531,15 @@ PrefabInstance:
       objectReference: {fileID: 1692313447}
     - target: {fileID: 7460997098213787651, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.059241112
+      value: 0.059241116
       objectReference: {fileID: 0}
     - target: {fileID: 7460997098213787651, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008157354
+      value: 0.000000003863314
       objectReference: {fileID: 0}
     - target: {fileID: 7460997098213787651, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.84101e-10
+      value: -2.2926963e-10
       objectReference: {fileID: 0}
     - target: {fileID: 7913509494419723664, guid: 3b12c1f465478264fb98b7398b2a16a6, type: 3}
       propertyPath: m_Follow
@@ -1061,7 +1065,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2d5daa1324869b148bb994cfbb766792, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d8c87251266344d438ff451800494726, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2289,18 +2293,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1409306008364946098, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -191.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409306008364946098, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 250.33774
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409306008364946098, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: 214.05078
-      objectReference: {fileID: 0}
     - target: {fileID: 1409306008855259284, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
       propertyPath: m_Name
       value: HammerXL (2)
@@ -2308,18 +2300,6 @@ PrefabInstance:
     - target: {fileID: 1409306008855259286, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
       propertyPath: m_RootOrder
       value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409306008855259286, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 159.552
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409306008855259286, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 159.552
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409306008855259286, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 159.552
       objectReference: {fileID: 0}
     - target: {fileID: 1409306008855259286, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4971,6 +4951,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1409306008364946098, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409306008364946098, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 172.97273
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409306008364946098, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.029221356
+      objectReference: {fileID: 0}
     - target: {fileID: 1409306008855259284, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
       propertyPath: m_Name
       value: HammerXL
@@ -6064,10 +6056,6 @@ PrefabInstance:
       value: 103.4
       objectReference: {fileID: 0}
     - target: {fileID: 1409306008364946098, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 250.33774
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409306008364946098, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -234.64922
       objectReference: {fileID: 0}
@@ -6078,18 +6066,6 @@ PrefabInstance:
     - target: {fileID: 1409306008855259286, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
       propertyPath: m_RootOrder
       value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409306008855259286, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 159.552
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409306008855259286, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 159.552
-      objectReference: {fileID: 0}
-    - target: {fileID: 1409306008855259286, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 159.552
       objectReference: {fileID: 0}
     - target: {fileID: 1409306008855259286, guid: 9e50d518d9709e446ac2c9ef4f9d4a7f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7492,6 +7468,10 @@ PrefabInstance:
       propertyPath: _pointSystem
       value: 
       objectReference: {fileID: 1700138361}
+    - target: {fileID: 4033308166976533367, guid: 6ab1e6766bf6f344bad406b350def4a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ab1e6766bf6f344bad406b350def4a9, type: 3}
 --- !u!1001 &1905143810
@@ -7501,10 +7481,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1409306008364946099, guid: f2d08f90e751f1d4ba09cd02a5ad805a, type: 3}
-      propertyPath: hitMultiplyer
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 1409306008855259284, guid: f2d08f90e751f1d4ba09cd02a5ad805a, type: 3}
       propertyPath: m_Name
       value: Hammer
@@ -8074,7 +8050,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d676fe577f5369e418e8ae176e24df50, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 24c05f14ce50c7348928bb9897e72308, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

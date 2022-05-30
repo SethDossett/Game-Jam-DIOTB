@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CharacterSounds : MonoBehaviour
 {
-    private AudioSource audio;
+    private AudioSource _audio;
 
     public AudioClip[] clips;
     // Start is called before the first frame update
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        _audio = GetComponent<AudioSource>();
     }
 
     
@@ -21,7 +21,7 @@ public class CharacterSounds : MonoBehaviour
         {
             if (clip.name == clipName)
             {
-                audio.PlayOneShot(clip);
+                _audio.PlayOneShot(clip);
             }
         }
     }

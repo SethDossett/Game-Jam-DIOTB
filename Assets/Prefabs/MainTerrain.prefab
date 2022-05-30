@@ -15,7 +15,7 @@ GameObject:
   m_Name: Terrain_(-1370.0, 0.0, -1866.0)
   m_TagString: Collision
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &182981469
@@ -91,7 +91,7 @@ GameObject:
   m_Name: Terrain_(630.0, 0.0, -1866.0)
   m_TagString: Collision
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &329973503
@@ -167,7 +167,7 @@ GameObject:
   m_Name: Terrain_(-370.0, 0.0, -1866.0)
   m_TagString: Collision
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &691451559
@@ -531,7 +531,7 @@ GameObject:
   m_Name: Terrain_(-1000.0, 0.0, 1000.0)
   m_TagString: Collision
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7569112024883923260
@@ -607,7 +607,7 @@ GameObject:
   m_Name: Terrain_(1000.0, 0.0, 1000.0)
   m_TagString: Collision
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7569112025535669820
@@ -683,7 +683,7 @@ GameObject:
   m_Name: Terrain_(1000.0, 0.0, 0.0)
   m_TagString: Collision
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7569112025868351059

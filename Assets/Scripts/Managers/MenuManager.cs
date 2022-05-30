@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         _hiscoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
     }
     public void StartGame()
@@ -22,9 +23,10 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator LoadScene()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSecondsRealtime(1.5f);
 
         SceneManager.LoadScene(1);
+        yield break;
     }
 
     public void QuitGame()
