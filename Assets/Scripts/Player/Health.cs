@@ -28,11 +28,14 @@ public class Health : MonoBehaviour
         Invoke("InvincibleCooldown",invincibleCooldownTime);
         if (health <= 0)
         {
+            invincible = true;
             StartCoroutine("SloMo");
             _dead.RaiseEvent();
             playerController.dead = true;
             playerController.MyPlayerSpeed = 20f;
             UI.ShowDeadScreen();
+            Invoke("InvincibleCooldown", 3);
+
         }
     }
 

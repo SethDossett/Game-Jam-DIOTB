@@ -7,13 +7,13 @@ public class GameOverManager : MonoBehaviour
     SaveGame _save;
     UIManager _UIManager;
 
-    private void Start()
+    void OnEnable()
     {
         _save = FindObjectOfType<SaveGame>();
-        _UIManager = GetComponentInParent<UIManager>();
+        _UIManager = FindObjectOfType<UIManager>();
 
     }
-    public void RestartGame()
+    public void NewRound()
     {
         _save.Save(_UIManager._totalPoints, _UIManager._coinAmount);
         StartCoroutine(ChangeScene(1));
@@ -26,7 +26,7 @@ public class GameOverManager : MonoBehaviour
         SceneManager.LoadScene(buildIndex);
     }
 
-    public void BackToMenu() 
+    public void ToMainMenu() 
     {
         _save.Save(_UIManager._totalPoints, _UIManager._coinAmount);
 

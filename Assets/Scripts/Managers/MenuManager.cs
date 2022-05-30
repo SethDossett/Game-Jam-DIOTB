@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] GameObject _instuctions;
     [SerializeField] GameObject _upgrades;
     [SerializeField] GameObject _options;
+    [SerializeField] TextMeshProUGUI _hiscoreText;
 
     public void StartGame()
     {
         StartCoroutine(LoadScene());
+        _hiscoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
     }
 
     IEnumerator LoadScene()
@@ -29,6 +32,7 @@ public class MenuManager : MonoBehaviour
     public void ResetHiscores()
     {
         PlayerPrefs.DeleteAll();
+        _hiscoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
     }
     public void OpenMenu(int option)
     {

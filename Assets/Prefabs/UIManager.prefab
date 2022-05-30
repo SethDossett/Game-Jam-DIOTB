@@ -605,7 +605,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1283574108}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
-        m_MethodName: BackToMenu
+        m_MethodName: ToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1437,7 +1437,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1283574108}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
-        m_MethodName: RestartGame
+        m_MethodName: NewRound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
